@@ -32,3 +32,7 @@ def add():
         f.write(json.dumps(data))
 
     return ('', 204) # Intentional empty response
+
+
+if __name__ == '__main__':
+    app.run()

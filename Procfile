@@ -1,1 +1,1 @@
-web: gunicorn saxo-survey:app --log-file=-
+web: gunicorn app:app --log-file=-
