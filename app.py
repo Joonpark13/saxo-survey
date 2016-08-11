@@ -8,12 +8,6 @@ from settings import APP_STATIC
 
 
 app = Flask(__name__)
-#TODO
-# Currently just checks to see if app is running on pythonanywhere (intended
-# quick deploy location) and turns debug on if not true. Later refactor for
-# more robust deployment options.
-if 'liveconsole' not in gethostname():
-    app.config["DEBUG"] = True
 
 
 #TODO doc this
