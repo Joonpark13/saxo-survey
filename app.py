@@ -1,5 +1,11 @@
-from flask import Flask, render_template
+import os
+import json
+
+from flask import Flask, render_template, url_for
 from socket import gethostname # For checking if it's running on pythonanywhere
+
+from settings import APP_STATIC
+
 
 app = Flask(__name__)
 #TODO
@@ -11,4 +17,7 @@ if 'liveconsole' not in gethostname():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    with open(os.path.join(APP_STATIC, 'data.json')) as f:
+        data = json.load(f)
+
+    return render_template('index.html', static_questions=data['static_questions'])

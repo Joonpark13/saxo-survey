@@ -2,23 +2,59 @@
 <html lang="en">
 
 <head>
-    <title>The NUMB Saxo Survey!</title>
+    <title>The NUMB Saxo Survey O'Fun!</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
     <div class="container">
         <div id="instructions">
-            <h4>Welcome to...</h4>
-            <h1>The 2016 Saxo Survey!</h1>
+            <h4>Welcome to the...</h4>
+            <h1>Saxo Survey O'Fun 2016!!!!</h1>
             <br>
-            <p>Instructions will go here.</p>
+            <p>We do this survey every summer to get to know new saxos, to keep up with old saxos,
+                and above all to revel in everything Saxo.</p>
+            <p>Just fill out the survey below. Where it asks you to come up with a question of your own,
+                make a question and answer it yourself.</p>
+            <p>READY!  SET!  GO!</p>
+            <p>GO 'CATS!</p>
+        </div>
+
+        <br>
+
+        <div id="questions">
+            <ul>
+                {% for question in static_questions %}
+                <li>
+                    <p class="question">{{ question }}</p>
+                    <textarea class="answer-input" id="answer-{{ loop.index }}"></textarea>
+                </li>
+                {% endfor %}
+
+                {% for question in custom_questions %}
+                <li>
+                    <p class="question">{{ question }}</p>
+                    <textarea class="answer-input" id="custom-answer-{{ loop.index }}"></textarea>
+                </li>
+                {% endfor %}
+
+                <li>
+                    <p class="make-up-text">Make up your own question and answer it!</p>
+                    <p class="make-up-prompt">Question: </p>
+                    <textarea class="answer-input" id="make-up-question"></textarea>
+                    <br>
+                    <p class="make-up-prompt">Answer: </p>
+                    <textarea class="answer-input" id="make-up-answer"></textarea>
+                </li>
+            </ul>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 
 </html>

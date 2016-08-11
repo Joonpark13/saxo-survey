@@ -1,0 +1,16 @@
+#instructions {
+    color: #4E2A84;
+}
+
+.answer-input {
+    height: 2em;
+    width: 50em;
+}
+
+.make-up-text {
+    font-weight: bold;
+}
+
+.make-up-prompt {
+    display: inline-block;
+}
