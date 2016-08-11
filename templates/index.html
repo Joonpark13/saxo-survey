@@ -34,6 +34,9 @@
                 </li>
                 {% endfor %}
 
+                <br>
+                <p class="prompt">Please answer the questions from the people before you:</p>
+
                 {% for question in custom_questions %}
                 <li>
                     <p class="question">{{ question }}</p>
@@ -42,7 +45,7 @@
                 {% endfor %}
             </ul>
 
-            <p class="make-up-text">Make up your own question and answer it!</p>
+            <p class="prompt">Make up your own question and answer it!</p>
             <p class="make-up-prompt">Question: </p>
             <textarea class="answer-input" id="make-up-question"></textarea>
             <br>

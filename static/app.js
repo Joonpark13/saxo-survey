@@ -9,7 +9,8 @@ $(function() {
         });
 
         // Add custom question
-        aggregate_text += "<p>" + $("#make-up-question").val() + " " +  $("#make-up-answer").val() + "</p>";
+        make_up_question = $("#make-up-question").val() + " ";
+        aggregate_text += "<p>" + make_up_question + $("#make-up-answer").val() + "</p>";
 
         $("#copy-paste").html(
             "<h4 id='copy-paste-instruction'>Copy and paste the text below as a reply to the survey email thread!</h4>" +
@@ -21,5 +22,13 @@ $(function() {
 
         // Show the instruction so the user will notice.
         document.getElementById("copy-paste-instruction").scrollIntoView();
+
+
+        // Send data to server
+        $.ajax({
+            type: "POST",
+            url: "/add",
+            data: {q: make_up_question}
+        });
     });
 });
