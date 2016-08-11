@@ -14,3 +14,11 @@
 .make-up-prompt {
     display: inline-block;
 }
+
+#submit-button {
+    display: block;
+    width: 150px;
+    height: 75px;
+    margin: auto;
+    font-size: 2em;
+}
