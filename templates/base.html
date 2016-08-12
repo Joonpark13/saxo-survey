@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>The NUMB Saxo Survey O'Fun!</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <!-- For mobile -->
+                <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <!-- These are the three bars that comprise the icon -->
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url_for('index') }}">The NUMB Saxo Survey O'Fun!</a>
+            </div>
+
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="{{ url_for('index') }}">Survey</a></li>
+                    <li><a href="{{ url_for('results') }}">Results</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+    {% block body %}{% endblock %}
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Created by Joon Park. Go 'Cats!</p>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"
+            integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    {% block js %}{% endblock %}
+</body>
+
+</html>

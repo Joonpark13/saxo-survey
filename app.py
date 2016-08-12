@@ -38,6 +38,10 @@ def add():
 
     return ('', 204) # Intentional empty response
 
+@app.route('/results')
+def results():
+    return render_template('results.html')
+
 
 if __name__ == '__main__':
     app.run()
