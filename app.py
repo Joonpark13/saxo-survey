@@ -1,37 +1,31 @@
 import os
-import json
 
 from flask import Flask, render_template, url_for, request
-from flask_sqlalchemy import SQLAlchemy
-from settings import APP_STATIC #TODO Won't need this after implementing db
+from models import db, Question
 
 
 app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True # warned by db
-db = SQLAlchemy(app)
-
-
-#TODO doc this
-def readData():
-    with open(os.path.join(APP_STATIC, 'data.json')) as f:
-        return json.load(f)
+db.init_app(app)
 
 
 @app.route('/')
 def index():
-    data = readData()
+    static_questions_data = Question.query.filter_by(type="static").all()
+    static_questions = [q.question for q in static_questions_data]
+    custom_questions_data = Question.query.filter_by(type="custom").all()
+    custom_questions = [q.question for q in custom_questions_data]
+
     return render_template('index.html',
-                           static_questions=data['static_questions'],
-                           custom_questions=data['custom_questions'])
+                           static_questions=static_questions,
+                           custom_questions=custom_questions)
 
 @app.route('/add', methods=['POST'])
 def add():
-    data = readData()
-    data['custom_questions'].append(request.form['q'])
-
-    with open(os.path.join(APP_STATIC, 'data.json'), 'w') as f:
-        f.write(json.dumps(data))
+    custom_question = request.form['q']
+    db.session.add(Question(custom_question, "custom"))
+    db.session.commit()
 
     return ('', 204) # Intentional empty response
 
