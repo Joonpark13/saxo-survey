@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask, render_template, url_for, request
-from models import db, Question
+from models import db, Question, User
 
 
 app = Flask(__name__)
@@ -23,8 +23,17 @@ def index():
 
 @app.route('/add', methods=['POST'])
 def add():
-    custom_question = request.form['q']
-    db.session.add(Question(custom_question, "custom"))
+    user_data = request.get_json()
+    static_data = user_data['static'] # format: {question_text1: answer_text1, ...}
+    custom_data = user_data['custom'] # format: {q: question_text_here, a: answer_text_here}
+    combined_data = static_data.copy()
+    combined_data.update({custom_data['q']: custom_data['a']})
+
+    db.session.add(Question(custom_data['q'], "custom"))
+
+    user = User(static_data['Real Name: '], combined_data)
+    db.session.add(user)
+
     db.session.commit()
 
     return ('', 204) # Intentional empty response

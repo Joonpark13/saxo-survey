@@ -71,7 +71,8 @@ custom_questions_text = [
     "game you're most hyped for this season? ",
     "emacs or vim? ",
     "Mac or PC? ",
-    "Or nah?? "
+    "Or nah?? ",
+    "What would you say is the real breakfast of champions? "
 ]
 
 with app.app_context():

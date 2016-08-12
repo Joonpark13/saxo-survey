@@ -11,7 +11,7 @@ class Question(db.Model):
 
     def __init__(self, question, type):
         self.question = question
-        self.type = type
+        self.type = type # Should be either "static" or "custom"
 
     def __repr__(self):
         return "<{0} question {1}>".format(self.type, self.question)
@@ -21,11 +21,11 @@ class User(db.Model):
     __tablename__ = "user"
 
     name = db.Column(db.String(), primary_key=True)
-    answers = db.Column(JSON)
+    data = db.Column(JSON)
 
-    def __init__(self, name, answers):
+    def __init__(self, name, data):
         self.name = name
-        self.answers = answers
+        self.data = data
 
     def __repr__(self):
         return "<user {0}>".format(self.name)
