@@ -2,12 +2,14 @@ import os
 import json
 
 from flask import Flask, render_template, url_for, request
-from socket import gethostname # For checking if it's running on pythonanywhere
-
-from settings import APP_STATIC
+from flask_sqlalchemy import SQLAlchemy
+from settings import APP_STATIC #TODO Won't need this after implementing db
 
 
 app = Flask(__name__)
+app.config.from_object(os.environ['APP_SETTINGS'])
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True # warned by db
+db = SQLAlchemy(app)
 
 
 #TODO doc this
