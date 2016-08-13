@@ -1,5 +1,29 @@
 {% extends "base.html" %}
+
 {% block body %}
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    {% for user in user_data %}
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion"
+                   href="#collapse{{ loop.index }}" aria-expanded="false"
+                   aria-controls="collapse{{ loop.index }}">
+                    {{ user.name }}
+                </a>
+            </h4>
+        </div>
+        <div id="collapse{{ loop.index }}" class="panel-collapse collapse in"
+             role="tabpanel" aria-labelledby="heading{{ loop.index }}">
+            <div class="panel-body">
+                {% for q in user.data %}
+                <p>{{ q }} {{ user.data[q] }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
 {% endblock %}
 

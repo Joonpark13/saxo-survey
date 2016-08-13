@@ -40,7 +40,9 @@ def add():
 
 @app.route('/results')
 def results():
-    return render_template('results.html')
+    user_data = User.query.all()
+
+    return render_template('results.html', user_data=user_data)
 
 
 if __name__ == '__main__':
