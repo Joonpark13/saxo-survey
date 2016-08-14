@@ -6,7 +6,8 @@ db = SQLAlchemy()
 class Question(db.Model):
     __tablename__ = "question"
 
-    question = db.Column(db.String(), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    question = db.Column(db.String())
     type = db.Column(db.String())
 
     def __init__(self, question, type):
@@ -21,7 +22,7 @@ class User(db.Model):
     __tablename__ = "user"
 
     name = db.Column(db.String(), primary_key=True)
-    data = db.Column(JSON)
+    data = db.Column(JSON) # Format: { id: "answer" }
 
     def __init__(self, name, data):
         self.name = name

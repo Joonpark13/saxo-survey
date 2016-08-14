@@ -16,8 +16,8 @@
         <div id="collapse{{ loop.index }}" class="panel-collapse collapse in"
              role="tabpanel" aria-labelledby="heading{{ loop.index }}">
             <div class="panel-body">
-                {% for q in user.data %}
-                <p>{{ q }} {{ user.data[q] }}</p>
+                {% for id in user.data %}
+                <p>{{ id }} {{ user.data[id] }}</p>
                 {% endfor %}
             </div>
         </div>

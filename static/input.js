@@ -41,7 +41,6 @@ $(function() {
                 static: user_data,
                 custom: {q: custom_question, a: custom_answer}
             }),
-            //dataType: "json"
             contentType: "application/json"
         });
     });

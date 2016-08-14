@@ -72,7 +72,8 @@ custom_questions_text = [
     "emacs or vim? ",
     "Mac or PC? ",
     "Or nah?? ",
-    "What would you say is the real breakfast of champions? "
+    "What would you say is the real breakfast of champions? ",
+    "Favorite dog breed? "
 ]
 
 with app.app_context():
